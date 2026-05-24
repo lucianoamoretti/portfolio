@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luciano Amoretti — Digital Content Specialist</title>
+  <meta name="description" content="Audiovisual Content Producer, Videographer & Social Media Specialist with 13+ years of experience. Scaled GrêmioTV from 45K to 900K+ subscribers." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #060612;
+      --glass-bg: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.09);
+      --glass-hover: rgba(255,255,255,0.08);
+      --text: #f1f5f9;
+      --muted: rgba(241,245,249,0.55);
+      --accent: #7c3aed;
+      --accent2: #2563eb;
+      --accent3: #0891b2;
+      --grad: linear-gradient(135deg, #7c3aed, #2563eb);
+      --radius: 20px;
+      --blur: blur(24px);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ─── BACKGROUND ORBS ─── */
+    .orbs {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
+    }
+    .orb {
+      position: absolute; border-radius: 50%;
+      filter: blur(120px); opacity: 0.18; animation: drift 18s ease-in-out infinite;
+    }
+    .orb-1 { width: 700px; height: 700px; background: #7c3aed; top: -15%; left: -10%; animation-delay: 0s; }
+    .orb-2 { width: 600px; height: 600px; background: #2563eb; top: 30%; right: -10%; animation-delay: -6s; }
+    .orb-3 { width: 500px; height: 500px; background: #0891b2; bottom: -10%; left: 30%; animation-delay: -12s; }
+
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(40px, -40px) scale(1.05); }
+      66% { transform: translate(-30px, 30px) scale(0.97); }
+    }
+
+    /* ─── GLASS UTILITY ─── */
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+      z-index: 1000; width: calc(100% - 40px); max-width: 1100px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 28px;
+      background: rgba(6,6,18,0.6);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid var(--glass-border);
+      border-radius: 60px;
+      transition: all .3s;
+    }
+    .nav-brand {
+      font-size: 1.1rem; font-weight: 800; letter-spacing: -.5px;
+      background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; gap: 6px; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: .85rem; font-weight: 500;
+      padding: 7px 14px; border-radius: 30px; transition: all .25s;
+    }
+    .nav-links a:hover { color: var(--text); background: var(--glass-hover); }
+    .nav-cta {
+      background: var(--grad) !important; color: #fff !important;
+      -webkit-text-fill-color: #fff !important;
+    }
+    .nav-cta:hover { opacity: .85; transform: scale(1.03); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: .3s; }
+
+    /* ─── SECTIONS ─── */
+    section { position: relative; z-index: 1; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .section-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 12px;
+    }
+    .section-label::before {
+      content: ''; width: 20px; height: 2px;
+      background: var(--grad); border-radius: 2px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800;
+      letter-spacing: -.03em; line-height: 1.15; margin-bottom: 16px;
+    }
+    .grad-text {
+      background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 120px 0 80px;
+    }
+    .hero-inner { max-width: 800px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 7px 16px; margin-bottom: 28px;
+      font-size: .8rem; font-weight: 600; color: var(--muted);
+      background: rgba(124,58,237,.12);
+      border: 1px solid rgba(124,58,237,.25);
+      border-radius: 30px;
+    }
+    .hero-badge .dot { width: 7px; height: 7px; background: #22c55e; border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+    .hero-name {
+      font-size: clamp(3rem, 8vw, 5.5rem); font-weight: 900;
+      letter-spacing: -.04em; line-height: 1; margin-bottom: 16px;
+    }
+    .hero-title {
+      font-size: clamp(1rem, 2.5vw, 1.3rem); font-weight: 400;
+      color: var(--muted); margin-bottom: 32px; max-width: 560px;
+    }
+    .hero-stats {
+      display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px;
+    }
+    .stat-card {
+      padding: 20px 28px;
+      text-align: center; min-width: 140px;
+    }
+    .stat-num {
+      font-size: 2rem; font-weight: 900; letter-spacing: -.04em;
+      background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+    .stat-label { font-size: .75rem; color: var(--muted); margin-top: 4px; font-weight: 500; }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      padding: 14px 32px; border-radius: 50px; font-weight: 700; font-size: .95rem;
+      background: var(--grad); color: #fff; text-decoration: none;
+      transition: all .25s; border: none; cursor: pointer;
+      box-shadow: 0 0 40px rgba(124,58,237,.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 60px rgba(124,58,237,.5); }
+    .btn-secondary {
+      padding: 14px 32px; border-radius: 50px; font-weight: 600; font-size: .95rem;
+      background: var(--glass-bg); color: var(--text); text-decoration: none;
+      border: 1px solid var(--glass-border); transition: all .25s;
+      backdrop-filter: blur(10px);
+    }
+    .btn-secondary:hover { background: var(--glass-hover); transform: translateY(-2px); }
+
+    /* ─── ABOUT ─── */
+    #about { padding: 120px 0; }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 48px;
+    }
+    .about-card { padding: 40px; }
+    .about-bio { font-size: 1rem; color: var(--muted); line-height: 1.8; }
+    .about-bio strong { color: var(--text); }
+    .about-bio p + p { margin-top: 16px; }
+    .skills-title { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 16px; }
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+    .skill-tag {
+      font-size: .78rem; font-weight: 600; padding: 6px 14px;
+      border-radius: 30px; background: rgba(124,58,237,.12);
+      border: 1px solid rgba(124,58,237,.2); color: #c4b5fd;
+      transition: all .2s;
+    }
+    .skill-tag:hover { background: rgba(124,58,237,.25); transform: scale(1.04); }
+    .lang-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .lang-name { font-size: .85rem; font-weight: 600; min-width: 90px; }
+    .lang-bar { flex: 1; height: 4px; background: rgba(255,255,255,.08); border-radius: 4px; overflow: hidden; }
+    .lang-fill { height: 100%; border-radius: 4px; background: var(--grad); }
+    .lang-level { font-size: .75rem; color: var(--muted); min-width: 80px; text-align: right; }
+
+    /* ─── PORTFOLIO ─── */
+    #portfolio { padding: 120px 0; }
+    .portfolio-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px;
+    }
+    .portfolio-card {
+      overflow: hidden; position: relative; cursor: pointer;
+      transition: transform .3s, box-shadow .3s;
+      aspect-ratio: 4/3;
+    }
+    .portfolio-card:first-child { grid-column: span 2; aspect-ratio: 16/9; }
+    .portfolio-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+    .portfolio-img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .5s; display: block;
+    }
+    .portfolio-card:hover .portfolio-img { transform: scale(1.06); }
+    .portfolio-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(6,6,18,.9) 0%, rgba(6,6,18,.2) 60%, transparent 100%);
+      padding: 24px; display: flex; flex-direction: column; justify-content: flex-end;
+      transition: background .3s;
+    }
+    .portfolio-tag {
+      font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em;
+      padding: 4px 10px; border-radius: 20px; width: fit-content; margin-bottom: 8px;
+      background: rgba(124,58,237,.7); color: #e9d5ff;
+    }
+    .portfolio-name { font-size: 1.1rem; font-weight: 800; margin-bottom: 4px; }
+    .portfolio-desc { font-size: .8rem; color: var(--muted); }
+
+    /* ─── GREMIOTV CASE STUDY ─── */
+    #gremiotv { padding: 120px 0; }
+    .case-wrap { padding: 56px; margin-top: 48px; }
+    .case-header { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: start; margin-bottom: 48px; }
+    .case-desc { font-size: 1rem; color: var(--muted); line-height: 1.8; max-width: 600px; }
+    .case-badge {
+      padding: 12px 24px; border-radius: 16px; text-align: center;
+      background: rgba(124,58,237,.12); border: 1px solid rgba(124,58,237,.25);
+    }
+    .case-badge-num { font-size: 2.2rem; font-weight: 900; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .case-badge-label { font-size: .75rem; color: var(--muted); }
+    .case-metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 48px; }
+    .metric-card { padding: 28px 20px; text-align: center; }
+    .metric-num { font-size: 2rem; font-weight: 900; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 6px; }
+    .metric-label { font-size: .78rem; color: var(--muted); font-weight: 500; }
+    .case-features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .feature-item { display: flex; align-items: flex-start; gap: 14px; padding: 20px; background: rgba(255,255,255,.03); border-radius: 12px; }
+    .feature-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+    .feature-title { font-size: .9rem; font-weight: 700; margin-bottom: 4px; }
+    .feature-desc { font-size: .8rem; color: var(--muted); line-height: 1.6; }
+    .case-images { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; border-radius: 14px; overflow: hidden; }
+    .case-images img { width: 100%; height: 220px; object-fit: cover; display: block; }
+
+    /* ─── PHOTOGRAPHY ─── */
+    #photography { padding: 120px 0; }
+    .photo-tabs { display: flex; gap: 8px; margin: 32px 0 28px; flex-wrap: wrap; }
+    .tab-btn {
+      padding: 9px 22px; border-radius: 30px; font-size: .85rem; font-weight: 600;
+      border: 1px solid var(--glass-border); background: var(--glass-bg);
+      color: var(--muted); cursor: pointer; transition: all .25s;
+      backdrop-filter: blur(10px);
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--grad); color: #fff; border-color: transparent;
+      box-shadow: 0 4px 20px rgba(124,58,237,.35);
+    }
+    .photo-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+    }
+    .photo-item {
+      overflow: hidden; border-radius: 12px; cursor: pointer;
+      position: relative; aspect-ratio: 4/3;
+      transition: transform .3s;
+    }
+    .photo-item:hover { transform: scale(1.02); z-index: 2; }
+    .photo-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .5s; display: block;
+    }
+    .photo-item:hover img { transform: scale(1.08); }
+
+    /* ─── LIGHTBOX ─── */
+    #lightbox {
+      position: fixed; inset: 0; background: rgba(0,0,0,.92); z-index: 9999;
+      display: none; align-items: center; justify-content: center;
+      backdrop-filter: blur(10px);
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 12px; object-fit: contain; }
+    #lightbox-close {
+      position: absolute; top: 24px; right: 32px; font-size: 2rem; cursor: pointer;
+      color: var(--text); background: rgba(255,255,255,.1); border: none;
+      width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; transition: .2s;
+    }
+    #lightbox-close:hover { background: rgba(255,255,255,.2); }
+
+    /* ─── CONTACT ─── */
+    #contact { padding: 120px 0 80px; }
+    .contact-wrap { padding: 64px; text-align: center; margin-top: 48px; }
+    .contact-tagline { font-size: 1.1rem; color: var(--muted); max-width: 500px; margin: 12px auto 48px; }
+    .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 48px; }
+    .contact-link {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 28px; border-radius: 50px;
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      color: var(--text); text-decoration: none; font-weight: 600;
+      transition: all .25s; backdrop-filter: blur(10px);
+    }
+    .contact-link:hover { background: var(--glass-hover); transform: translateY(-3px); }
+    .contact-link.primary {
+      background: var(--grad); border-color: transparent;
+      box-shadow: 0 0 40px rgba(124,58,237,.3);
+    }
+    .contact-link.primary:hover { box-shadow: 0 0 60px rgba(124,58,237,.5); }
+    .social-row { display: flex; justify-content: center; gap: 12px; }
+    .social-link {
+      width: 46px; height: 46px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--glass-bg); border: 1px solid var(--glass-border);
+      color: var(--muted); text-decoration: none; font-size: 1.1rem;
+      transition: all .25s; backdrop-filter: blur(10px);
+    }
+    .social-link:hover { color: var(--text); background: var(--glass-hover); transform: translateY(-3px); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      position: relative; z-index: 1; text-align: center;
+      padding: 28px; font-size: .8rem; color: var(--muted);
+      border-top: 1px solid var(--glass-border);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr 1fr; }
+      .portfolio-card:first-child { grid-column: span 2; }
+      .case-metrics { grid-template-columns: 1fr 1fr; }
+      .case-features { grid-template-columns: 1fr; }
+      .case-header { grid-template-columns: 1fr; }
+      .case-images { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .portfolio-card:first-child { grid-column: span 1; }
+      .photo-grid { grid-template-columns: 1fr 1fr; }
+      .hero-stats { gap: 10px; }
+      .stat-card { min-width: 100px; padding: 16px 20px; }
+      .case-wrap, .about-card, .contact-wrap { padding: 28px 20px; }
+      .case-metrics { grid-template-columns: 1fr 1fr; }
+      nav { width: calc(100% - 24px); padding: 12px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Background orbs -->
+<div class="orbs">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <button id="lightbox-close">✕</button>
+  <img id="lightbox-img" src="" alt="" />
+</div>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <div class="nav-brand">Luciano Amoretti</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#gremiotv">GrêmioTV</a>
+    <a href="#photography">Photography</a>
+    <a href="#contact" class="nav-cta">Contact</a>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Available for new opportunities · Dublin, Ireland
+      </div>
+      <h1 class="hero-name">
+        Luciano<br>
+        <span class="grad-text">Amoretti</span>
+      </h1>
+      <p class="hero-title">
+        Digital Content Specialist · Videographer · Social Media Strategist<br>
+        13+ years creating high-impact content across Brazil, Italy &amp; Ireland
+      </p>
+      <div class="hero-stats">
+        <div class="stat-card glass">
+          <div class="stat-num" data-target="900">0</div>
+          <div class="stat-label">K+ YouTube Subscribers</div>
+        </div>
+        <div class="stat-card glass">
+          <div class="stat-num" data-target="1900" data-suffix="%">0</div>
+          <div class="stat-label">Channel Growth</div>
+        </div>
+        <div class="stat-card glass">
+          <div class="stat-num" data-target="13" data-suffix="+">0</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+      </div>
+      <div class="hero-ctas">
+        <a href="#portfolio" class="btn-primary">View Portfolio</a>
+        <a href="#contact" class="btn-secondary">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section id="about">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Who I am</div>
+      <h2 class="section-title">Storytelling meets<br><span class="grad-text">strategy.</span></h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-card glass reveal">
+        <div class="about-bio">
+          <p>I am an <strong>Audiovisual Content Producer, Videographer, and Social Media Specialist</strong> with over 13 years of experience creating high-impact content for professional sports, institutions, and digital platforms.</p>
+          <p>My career began in 2007 in photography, quickly expanding into live event coverage, concert photography, and commercial work. From 2015 to 2022, I spent seven years at <strong>Grêmio Foot-Ball Porto Alegrense</strong> — one of Brazil's leading football clubs — transforming their YouTube channel from a 45K-subscriber platform into a 900K+ subscriber ecosystem.</p>
+          <p>In 2023 I relocated to Europe — first Italy, then Ireland. Based in Dublin since 2023, I continue to pursue photography and videography professionally while combining international cross-cultural experience with a strategic digital mindset.</p>
+          <p>I hold a <strong>Bachelor's Degree in Social Communication — Advertising and Marketing</strong>. My approach combines storytelling instinct, technical precision, and data-driven editorial thinking.</p>
+        </div>
+      </div>
+      <div class="about-card glass reveal">
+        <div class="skills-title">Core Skills</div>
+        <div class="skills-grid">
+          <span class="skill-tag">Adobe Premiere Pro</span>
+          <span class="skill-tag">After Effects</span>
+          <span class="skill-tag">Photoshop</span>
+          <span class="skill-tag">Lightroom</span>
+          <span class="skill-tag">Photography</span>
+          <span class="skill-tag">Videography</span>
+          <span class="skill-tag">Social Media</span>
+          <span class="skill-tag">Content Strategy</span>
+          <span class="skill-tag">Scriptwriting</span>
+          <span class="skill-tag">Visual Identity</span>
+          <span class="skill-tag">Campaign Planning</span>
+          <span class="skill-tag">Broadcast Ops</span>
+          <span class="skill-tag">WordPress</span>
+          <span class="skill-tag">KPI Tracking</span>
+          <span class="skill-tag">Influencer Collab</span>
+        </div>
+        <div class="skills-title" style="margin-top:24px">Languages</div>
+        <div class="lang-row">
+          <span class="lang-name">Portuguese</span>
+          <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+          <span class="lang-level">Native</span>
+        </div>
+        <div class="lang-row">
+          <span class="lang-name">Italian</span>
+          <div class="lang-bar"><div class="lang-fill" style="width:90%"></div></div>
+          <span class="lang-level">Fluent</span>
+        </div>
+        <div class="lang-row">
+          <span class="lang-name">English</span>
+          <div class="lang-bar"><div class="lang-fill" style="width:80%"></div></div>
+          <span class="lang-level">Professional</span>
+        </div>
+        <div class="lang-row">
+          <span class="lang-name">Spanish</span>
+          <div class="lang-bar"><div class="lang-fill" style="width:35%"></div></div>
+          <span class="lang-level">Conversational</span>
+        </div>
+        <div style="margin-top:28px">
+          <a href="https://www.linkedin.com/in/luciano-amoretti-3b1b3834/" target="_blank" class="btn-primary" style="display:inline-block;font-size:.85rem;padding:12px 24px">View LinkedIn Profile →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PORTFOLIO ─── -->
+<section id="portfolio">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Selected Work</div>
+      <h2 class="section-title">Projects that<br><span class="grad-text">made an impact.</span></h2>
+    </div>
+    <div class="portfolio-grid reveal">
+      <div class="portfolio-card glass">
+        <img class="portfolio-img"
+          src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/5a64f183-e4a7-4103-a150-61b660c7145e_rw_1920.jpg?h=07337ed69c17250630a1e00019125033"
+          alt="GrêmioTV" loading="lazy" />
+        <div class="portfolio-overlay">
+          <div class="portfolio-tag">Sports Media · 2015–2022</div>
+          <div class="portfolio-name">GrêmioTV — Official Club Channel</div>
+          <div class="portfolio-desc">Scaled from 45K to 900K+ subscribers · 1,900% growth</div>
+        </div>
+      </div>
+      <div class="portfolio-card glass">
+        <img class="portfolio-img"
+          src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/ca752ce6-2a09-45de-9d31-b4d4ccb18d91_rw_3840.jpg?h=dc94ffe9d7340b069741f861c43d081c"
+          alt="Sports Photography" loading="lazy" />
+        <div class="portfolio-overlay">
+          <div class="portfolio-tag">Photography · 2014–Present</div>
+          <div class="portfolio-name">Sports Photography</div>
+          <div class="portfolio-desc">League of Ireland · Brasileirão · Serie A</div>
+        </div>
+      </div>
+      <div class="portfolio-card glass">
+        <img class="portfolio-img"
+          src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/ccb32948-8866-4019-9125-79ce290f36d0_rw_1920.jpg?h=99e3a9ce40168a43779af139b9fdbeda"
+          alt="Events Photography" loading="lazy" />
+        <div class="portfolio-overlay">
+          <div class="portfolio-tag">Photography · 2007–Present</div>
+          <div class="portfolio-name">Concerts &amp; Events</div>
+          <div class="portfolio-desc">Live events, concerts &amp; social occasions</div>
+        </div>
+      </div>
+      <div class="portfolio-card glass">
+        <img class="portfolio-img"
+          src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/7cb8150b-0291-4604-9f47-3a133cbf55b3_rw_1200.jpg?h=78e6d26484ba4a3d64fb1798451074dd"
+          alt="Magazines" loading="lazy" />
+        <div class="portfolio-overlay">
+          <div class="portfolio-tag">Editorial</div>
+          <div class="portfolio-name">Magazines &amp; Journals</div>
+          <div class="portfolio-desc">Editorial photography for print &amp; digital media</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── GREMIOTV CASE STUDY ─── -->
+<section id="gremiotv">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Case Study</div>
+      <h2 class="section-title">GrêmioTV —<br><span class="grad-text">900K subscribers.</span></h2>
+    </div>
+    <div class="case-wrap glass reveal">
+      <div class="case-header">
+        <div>
+          <p class="case-desc">
+            GrêmioTV is the official digital media platform of Grêmio Foot-Ball Porto Alegrense, one of Brazil's most traditional football clubs with nearly <strong>10 million supporters</strong>. When I joined in December 2015, the channel had approximately 45,000 subscribers and operated primarily as a supplementary content platform.
+          </p>
+          <p class="case-desc" style="margin-top:16px">
+            Over seven years, I contributed to transforming it into a structured, brand-driven digital media operation — scaling to <strong>900,000+ subscribers</strong> and consolidating it as the club's primary owned media asset through long-term consistency, format innovation, and visual standardisation.
+          </p>
+        </div>
+        <div class="case-badge">
+          <div class="case-badge-num">1,900%</div>
+          <div class="case-badge-label">Channel Growth</div>
+        </div>
+      </div>
+      <div class="case-metrics">
+        <div class="metric-card glass">
+          <div class="metric-num">900K+</div>
+          <div class="metric-label">Subscribers at peak</div>
+        </div>
+        <div class="metric-card glass">
+          <div class="metric-num">45K</div>
+          <div class="metric-label">Starting subscribers</div>
+        </div>
+        <div class="metric-card glass">
+          <div class="metric-num">7 yrs</div>
+          <div class="metric-label">Sustained growth</div>
+        </div>
+        <div class="metric-card glass">
+          <div class="metric-num">#1</div>
+          <div class="metric-label">Club's primary media asset</div>
+        </div>
+      </div>
+      <div class="case-features">
+        <div class="feature-item">
+          <div class="feature-icon">📺</div>
+          <div>
+            <div class="feature-title">Live Radio → YouTube Broadcast</div>
+            <div class="feature-desc">Pioneered the migration of traditional radio match commentary to live YouTube broadcasts with on-camera hosts — a format later adopted across Brazilian football clubs.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🎬</div>
+          <div>
+            <div class="feature-title">Desafio JBL Viral Series</div>
+            <div class="feature-desc">Developed and produced a recurring lip-reading challenge featuring first-team players. Episodes consistently reached hundreds of thousands of views, driving subscriber growth and fan engagement.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🎨</div>
+          <div>
+            <div class="feature-title">Visual Identity & Thumbnail Strategy</div>
+            <div class="feature-desc">Designed and standardised the channel's visual identity system — thumbnails, graphic assets, and on-screen branding — ensuring consistent brand presence across all content.</div>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📈</div>
+          <div>
+            <div class="feature-title">Long-term Editorial Planning</div>
+            <div class="feature-desc">Co-developed creative direction and content calendars aligned with the football season, transforming the channel from a reactive posting platform into a proactive digital media ecosystem.</div>
+          </div>
+        </div>
+      </div>
+      <div class="case-images">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/2089916b-430c-4d57-bf6d-f7c0c2d388ac_rw_1920.jpg?h=401d304aed57a94476aac1d6603eb90a" alt="GrêmioTV production" loading="lazy" />
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/5a64f183-e4a7-4103-a150-61b660c7145e_rw_1920.jpg?h=07337ed69c17250630a1e00019125033" alt="GrêmioTV broadcast" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PHOTOGRAPHY ─── -->
+<section id="photography">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Photography</div>
+      <h2 class="section-title">Moments that<br><span class="grad-text">tell stories.</span></h2>
+    </div>
+    <div class="photo-tabs">
+      <button class="tab-btn active" onclick="filterPhotos('sports')">Sports</button>
+      <button class="tab-btn" onclick="filterPhotos('events')">Concerts &amp; Events</button>
+      <button class="tab-btn" onclick="filterPhotos('editorial')">Editorial</button>
+    </div>
+    <div class="photo-grid reveal" id="photo-grid">
+      <!-- Sports (default visible) -->
+      <div class="photo-item" data-cat="sports">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/ca752ce6-2a09-45de-9d31-b4d4ccb18d91_rw_3840.jpg?h=dc94ffe9d7340b069741f861c43d081c" alt="Sports" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="photo-item" data-cat="sports">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/bab1319e-08d0-4bca-8600-d598efe4cbc2_rw_1920.jpg?h=0430efc82f1ceaae597c684139b5d291" alt="Sports" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="photo-item" data-cat="sports">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/f8f8cff2-bafc-44a3-bc72-da4eea0e3fd7_rw_1920.jpg?h=1d5ccd608fb4cf2da02f3aab076411f4" alt="Sports" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="photo-item" data-cat="sports">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/699e5887-2b90-42f0-afed-14a423405dcb_rw_1200.jpg?h=804a7c2babda14c2bf29bcadfa7b28d6" alt="Sports" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="photo-item" data-cat="sports">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/c41f981c-2a7f-4853-a88c-330beb2952dc_rw_1920.jpg?h=b623529f1f4cf6d01e4a1eca317bae9e" alt="Sports" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="photo-item" data-cat="sports">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/a12bb1f1-dfc3-4abc-8407-3aa9e4ef8488_rw_1920.jpg?h=dae77cf2b9d76301f0d63c8ca5cd948d" alt="Sports" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="photo-item" data-cat="sports">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/0d5bfb57-ee76-4d91-a102-f264560bcb01_rw_1920.jpg?h=97e24422cb410b5d068c9305a6e3657c" alt="Sports" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="photo-item" data-cat="sports">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/f6a60f88-3541-429a-9b3c-40be3ce7a0ee_rw_1920.jpg?h=f3cfee55f6b88edd19ca55f0872d5460" alt="Sports" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="photo-item" data-cat="sports">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/30648cfd-910a-4dda-8c8e-1a341a01d805_rw_1920.jpg?h=aa935009acb55cd3eacb34e120d6577b" alt="Sports" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <!-- Events -->
+      <div class="photo-item" data-cat="events" style="display:none">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/ccb32948-8866-4019-9125-79ce290f36d0_rw_1920.jpg?h=99e3a9ce40168a43779af139b9fdbeda" alt="Concert" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="photo-item" data-cat="events" style="display:none">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/8efc602e-221f-4609-9c26-43c508164270_rw_1920.jpg?h=37a858a2aa3d41c66a03d3826a08cff5" alt="Concert" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="photo-item" data-cat="events" style="display:none">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/c0782fcc-9cdc-48a0-aa4c-191578b16ae5_rw_1920.jpg?h=38a353799157c7df783c4172272fe708" alt="Event" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="photo-item" data-cat="events" style="display:none">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/61c524ff-bbfd-4f48-ba14-dbdc929c6e90_rw_1920.jpg?h=69e3847a5c0085f20b7cbc4c9e9c8867" alt="Event" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="photo-item" data-cat="events" style="display:none">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/d66ff950-5ee4-4ecb-9c77-795f720452a3_rw_1920.jpg?h=d401712872b9f4eee3d37609caae72bf" alt="Event" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="photo-item" data-cat="events" style="display:none">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/e38875eb-91d6-4dce-92f1-fff4bcca75e2_rw_1200.jpg?h=c25c94ac840e1859ca59cd460398185f" alt="Event" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="photo-item" data-cat="events" style="display:none">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/c2684df8-6713-4556-9a2f-382531f3cd92_rw_1920.jpg?h=71e998c9a92f72bdfd0ada1f7cdeb0f8" alt="Event" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="photo-item" data-cat="events" style="display:none">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/4b1c612f-b0e6-4643-a9c1-376811774e9e_rw_1920.jpg?h=608f1c2b00ed973e617ec76b73c545d8" alt="Wedding" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="photo-item" data-cat="events" style="display:none">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/769657ca-387b-4cce-a8ec-9c3e94dd47a8_rw_1200.jpg?h=d3616d46c462d59b88731161e6f8010e" alt="Event" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <!-- Editorial -->
+      <div class="photo-item" data-cat="editorial" style="display:none">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/7cb8150b-0291-4604-9f47-3a133cbf55b3_rw_1200.jpg?h=78e6d26484ba4a3d64fb1798451074dd" alt="Magazine" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="photo-item" data-cat="editorial" style="display:none">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/d1443f40-28ca-44b8-aa80-2adbeece8f10_rw_1200.jpg?h=a97765656760708ef0e67db7aeed4d4f" alt="Magazine" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="photo-item" data-cat="editorial" style="display:none">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/4402c6d8-abe9-4141-ad19-ddc90eb31432_rw_1200.jpg?h=953e3ba44d819cb40deb4d32df16a527" alt="Magazine" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="photo-item" data-cat="editorial" style="display:none">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/004c30f0-cc3c-4045-a23b-5c48b94eec29_rw_1200.jpg?h=1cd9e9ca6f529bc1ac9a6581e9882b31" alt="Magazine" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="photo-item" data-cat="editorial" style="display:none">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/e7c1cea9-78b2-4d33-9a2a-04f2a69d5683_rw_1920.jpg?h=ac3ddcbc12838c7ba2839f3cc140803d" alt="Journal" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="photo-item" data-cat="editorial" style="display:none">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/4e0219d1-dd5c-497c-b445-63cff060b802_rw_1200.jpg?h=efed7dc78fad3da08cee319cc073836f" alt="Editorial" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="photo-item" data-cat="editorial" style="display:none">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/cbd2c606-9657-4aab-9a4d-cd76127a5459_rw_1200.jpg?h=65dd2c003c061ae549cb6b0b210ffe80" alt="Editorial" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="photo-item" data-cat="editorial" style="display:none">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/7d7240de-3cb3-4108-9da9-9d2af0ca44e1_rw_1200.jpg?h=318730f6312e9cd390262aa590866ca9" alt="Editorial" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+      <div class="photo-item" data-cat="editorial" style="display:none">
+        <img src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/d160c17a-9e4e-4baa-9409-f86afbc76de7_rw_1920.jpg?h=1d217a19b6e581fe7ca7ae6fb710892c" alt="Editorial" loading="lazy" onclick="openLightbox(this.src)" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section id="contact">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Let's work together</div>
+      <h2 class="section-title">Open to new<br><span class="grad-text">opportunities.</span></h2>
+    </div>
+    <div class="contact-wrap glass reveal">
+      <p class="contact-tagline">
+        Based in Dublin, Ireland. Available for full-time, freelance, and contract roles in content production, social media, videography, and photography.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:lushiriu@gmail.com" class="contact-link primary">
+          ✉ lushiriu@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/luciano-amoretti-3b1b3834/" target="_blank" class="contact-link">
+          in LinkedIn Profile
+        </a>
+      </div>
+      <div class="social-row">
+        <a href="https://www.linkedin.com/in/luciano-amoretti-3b1b3834/" target="_blank" class="social-link" title="LinkedIn">in</a>
+        <a href="https://www.instagram.com/lucianoamoretti" target="_blank" class="social-link" title="Instagram">📷</a>
+        <a href="https://www.facebook.com/lucianoamoretti" target="_blank" class="social-link" title="Facebook">f</a>
+        <a href="https://amorettti.myportfolio.com/" target="_blank" class="social-link" title="Adobe Portfolio">▶</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Luciano Amoretti · Dublin, Ireland · Built with glassmorphism &amp; craft.</p>
+</footer>
+
+<script>
+  // ─── COUNTER ANIMATION ───
+  function animateCounter(el) {
+    const target = +el.dataset.target;
+    const suffix = el.dataset.suffix || 'K+';
+    const isLarge = target > 100;
+    const duration = 1800;
+    const step = duration / 60;
+    let current = 0;
+    const increment = target / (duration / step);
+    const timer = setInterval(() => {
+      current = Math.min(current + increment, target);
+      el.textContent = isLarge && target !== 1900
+        ? Math.floor(current) + (suffix || '')
+        : Math.floor(current) + (suffix || '');
+      if (current >= target) {
+        el.textContent = target + (suffix !== undefined ? suffix : 'K+');
+        clearInterval(timer);
+      }
+    }, step);
+  }
+
+  // ─── INTERSECTION OBSERVER ───
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        if (e.target.classList.contains('hero-stats') || e.target.id === 'hero') {
+          document.querySelectorAll('.stat-num[data-target]').forEach(animateCounter);
+        }
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  io.observe(document.getElementById('hero'));
+
+  // ─── PHOTO TABS ───
+  function filterPhotos(cat) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    document.querySelectorAll('.photo-item').forEach(item => {
+      item.style.display = item.dataset.cat === cat ? 'block' : 'none';
+    });
+  }
+
+  // ─── LIGHTBOX ───
+  function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  document.getElementById('lightbox-close').onclick = () => {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  };
+  document.getElementById('lightbox').onclick = function(e) {
+    if (e.target === this) {
+      this.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  };
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
+  // ─── MOBILE MENU ───
+  function toggleMenu() {
+    const links = document.querySelector('.nav-links');
+    if (links.style.display === 'flex') {
+      links.style.display = '';
+    } else {
+      links.style.cssText = 'display:flex;flex-direction:column;position:absolute;top:70px;right:20px;background:rgba(6,6,18,.95);backdrop-filter:blur(30px);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:12px;gap:4px;min-width:180px;';
+    }
+  }
+
+  // ─── SMOOTH NAV HIGHLIGHT ───
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? '#fff' : '';
+      a.style.background = a.getAttribute('href') === '#' + current && !a.classList.contains('nav-cta') ? 'rgba(255,255,255,0.08)' : '';
+    });
+  });
+</script>
+</body>
+</html>
