@@ -220,6 +220,8 @@
     }
     .portfolio-name { font-size: 1.1rem; font-weight: 800; margin-bottom: 4px; }
     .portfolio-desc { font-size: .8rem; color: var(--muted); }
+    .portfolio-cta { font-size: .72rem; color: rgba(255,255,255,.6); margin-top: 8px; letter-spacing: .06em; transition: color .2s; }
+    .portfolio-card:hover .portfolio-cta { color: #a78bfa; }
 
     /* ─── GREMIOTV CASE STUDY ─── */
     #gremiotv { padding: 120px 0; }
@@ -492,7 +494,7 @@
       <h2 class="section-title">Projects that<br><span class="grad-text">made an impact.</span></h2>
     </div>
     <div class="portfolio-grid reveal">
-      <div class="portfolio-card glass">
+      <a href="#gremiotv" class="portfolio-card glass" style="text-decoration:none">
         <img class="portfolio-img"
           src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/5a64f183-e4a7-4103-a150-61b660c7145e_rw_1920.jpg?h=07337ed69c17250630a1e00019125033"
           alt="GrêmioTV" loading="lazy" />
@@ -500,9 +502,21 @@
           <div class="portfolio-tag">Sports Media · 2015–2022</div>
           <div class="portfolio-name">GrêmioTV — Official Club Channel</div>
           <div class="portfolio-desc">Scaled from 45K to 900K+ subscribers · 1,900% growth</div>
+          <div class="portfolio-cta">View case study →</div>
         </div>
-      </div>
-      <div class="portfolio-card glass">
+      </a>
+      <a href="#erincollege" class="portfolio-card glass" style="text-decoration:none">
+        <img class="portfolio-img"
+          src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/cb61b4c5-190f-4c68-9820-bef444efa254_rw_1920.png?h=787f7e0dab2c2990e6eb33827d00f502"
+          alt="Erin College" loading="lazy" />
+        <div class="portfolio-overlay">
+          <div class="portfolio-tag">Social Media · Dublin 2024</div>
+          <div class="portfolio-name">Erin College — Dublin</div>
+          <div class="portfolio-desc">Social media, influencer strategy &amp; digital campaigns</div>
+          <div class="portfolio-cta">View case study →</div>
+        </div>
+      </a>
+      <a href="#photography" onclick="setTimeout(()=>filterTab('sports'),400)" class="portfolio-card glass" style="text-decoration:none">
         <img class="portfolio-img"
           src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/ca752ce6-2a09-45de-9d31-b4d4ccb18d91_rw_3840.jpg?h=dc94ffe9d7340b069741f861c43d081c"
           alt="Sports Photography" loading="lazy" />
@@ -510,9 +524,10 @@
           <div class="portfolio-tag">Photography · 2014–Present</div>
           <div class="portfolio-name">Sports Photography</div>
           <div class="portfolio-desc">League of Ireland · Brasileirão · Serie A</div>
+          <div class="portfolio-cta">View gallery →</div>
         </div>
-      </div>
-      <div class="portfolio-card glass">
+      </a>
+      <a href="#photography" onclick="setTimeout(()=>filterTab('events'),400)" class="portfolio-card glass" style="text-decoration:none">
         <img class="portfolio-img"
           src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/ccb32948-8866-4019-9125-79ce290f36d0_rw_1920.jpg?h=99e3a9ce40168a43779af139b9fdbeda"
           alt="Events Photography" loading="lazy" />
@@ -520,9 +535,10 @@
           <div class="portfolio-tag">Photography · 2007–Present</div>
           <div class="portfolio-name">Concerts &amp; Events</div>
           <div class="portfolio-desc">Live events, concerts &amp; social occasions</div>
+          <div class="portfolio-cta">View gallery →</div>
         </div>
-      </div>
-      <div class="portfolio-card glass">
+      </a>
+      <a href="#photography" onclick="setTimeout(()=>filterTab('editorial'),400)" class="portfolio-card glass" style="text-decoration:none">
         <img class="portfolio-img"
           src="https://cdn.myportfolio.com/717e8df1-d4b6-4b14-8d95-43d1a3a78377/7cb8150b-0291-4604-9f47-3a133cbf55b3_rw_1200.jpg?h=78e6d26484ba4a3d64fb1798451074dd"
           alt="Magazines" loading="lazy" />
@@ -530,8 +546,9 @@
           <div class="portfolio-tag">Editorial</div>
           <div class="portfolio-name">Magazines &amp; Journals</div>
           <div class="portfolio-desc">Editorial photography for print &amp; digital media</div>
+          <div class="portfolio-cta">View gallery →</div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
@@ -869,6 +886,14 @@
   function filterPhotos(cat) {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     event.target.classList.add('active');
+    document.querySelectorAll('.photo-item').forEach(item => {
+      item.style.display = item.dataset.cat === cat ? 'block' : 'none';
+    });
+  }
+  function filterTab(cat) {
+    document.querySelectorAll('.tab-btn').forEach(b => {
+      b.classList.toggle('active', b.textContent.toLowerCase().includes(cat === 'events' ? 'concert' : cat));
+    });
     document.querySelectorAll('.photo-item').forEach(item => {
       item.style.display = item.dataset.cat === cat ? 'block' : 'none';
     });
