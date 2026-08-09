@@ -227,6 +227,44 @@
     a.portfolio-card { color: inherit; }
     a.portfolio-card:visited { color: inherit; }
 
+    /* ─── VIDEO ─── */
+    #video { padding: 120px 0; }
+    .video-list { display: flex; flex-direction: column; gap: 16px; margin-top: 48px; }
+    .video-item {
+      display: grid; grid-template-columns: 360px 1fr; gap: 28px; align-items: center;
+      padding: 18px; text-decoration: none; color: inherit;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .video-item:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,.45); }
+    .video-thumb {
+      position: relative; aspect-ratio: 16/9; border-radius: 14px; overflow: hidden;
+    }
+    .video-thumb img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform .5s;
+    }
+    .video-item:hover .video-thumb img { transform: scale(1.06); }
+    .video-play {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    }
+    .video-play span {
+      width: 58px; height: 58px; border-radius: 50%;
+      background: rgba(6,6,18,.5); border: 1px solid rgba(255,255,255,.35);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; color: #fff; padding-left: 4px;
+      backdrop-filter: blur(6px); transition: .25s;
+    }
+    .video-item:hover .video-play span { background: var(--grad); border-color: transparent; transform: scale(1.1); }
+    .video-tag {
+      font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em;
+      padding: 4px 10px; border-radius: 20px; width: fit-content; margin-bottom: 10px;
+      background: rgba(124,58,237,.7); color: #e9d5ff;
+    }
+    .video-title { font-size: 1.3rem; font-weight: 800; letter-spacing: -.02em; margin-bottom: 6px; }
+    .video-meta { font-size: .85rem; color: var(--muted); }
+    .video-cta { font-size: .72rem; color: rgba(255,255,255,.6); margin-top: 12px; letter-spacing: .06em; transition: color .2s; }
+    .video-item:hover .video-cta { color: #a78bfa; }
+
     /* ─── GREMIOTV CASE STUDY ─── */
     #gremiotv { padding: 120px 0; }
     .case-wrap { padding: 56px; margin-top: 48px; }
@@ -349,6 +387,7 @@
       .portfolio-grid { grid-template-columns: 1fr; }
       .portfolio-card:first-child { grid-column: span 1; }
       .photo-grid { grid-template-columns: 1fr 1fr; }
+      .video-item { grid-template-columns: 1fr; gap: 16px; }
       .hero-stats { gap: 10px; }
       .stat-card { min-width: 100px; padding: 16px 20px; }
       .case-wrap, .about-card, .contact-wrap { padding: 28px 20px; }
@@ -377,10 +416,11 @@
   <div class="nav-brand">Luciano Amoretti</div>
   <div class="nav-links">
     <a href="#about">About</a>
+    <a href="#video">Video</a>
+    <a href="#photography">Photography</a>
     <a href="#portfolio">Portfolio</a>
     <a href="#gremiotv">GrêmioTV</a>
     <a href="#erincollege">Erin College</a>
-    <a href="#photography">Photography</a>
     <a href="#contact" class="nav-cta">Contact</a>
   </div>
   <div class="hamburger" onclick="toggleMenu()">
@@ -486,6 +526,105 @@
           <a href="https://www.linkedin.com/in/lucianoamoretti/" target="_blank" class="btn-primary" style="display:inline-block;font-size:.85rem;padding:12px 24px">View LinkedIn Profile →</a>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── VIDEO ─── -->
+<!--
+  SEÇÃO DE VÍDEO (referência: jackcole.tv)
+  Como editar depois:
+   • Troque cada src="...IMAGEM N..." pela imagem/thumbnail real do vídeo.
+   • Troque href="#" pelo link do vídeo (YouTube, Vimeo, etc.) — use target="_blank" para abrir em nova aba.
+   • Ajuste o .video-title e o .video-meta de cada item.
+   • Para adicionar/remover vídeos, duplique ou apague um bloco <a class="video-item ...">.
+-->
+<section id="video">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-label">Video</div>
+      <h2 class="section-title">Motion that<br><span class="grad-text">moves people.</span></h2>
+    </div>
+    <div class="video-list reveal">
+
+      <a href="#" class="video-item glass">
+        <div class="video-thumb">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='360'%3E%3Crect width='640' height='360' fill='%230d0d1f'/%3E%3Crect x='2' y='2' width='636' height='356' fill='none' stroke='%237c3aed' stroke-width='2' stroke-dasharray='10 8'/%3E%3Ctext x='320' y='190' fill='%237c3aed' font-family='Inter,Arial,sans-serif' font-size='44' font-weight='800' text-anchor='middle'%3EIMAGEM 1%3C/text%3E%3C/svg%3E" alt="IMAGEM 1" loading="lazy" />
+          <div class="video-play"><span>▶</span></div>
+        </div>
+        <div class="video-info">
+          <div class="video-tag">Video</div>
+          <div class="video-title">Título do vídeo 1</div>
+          <div class="video-meta">Cliente · Categoria · Ano</div>
+          <div class="video-cta">Watch video →</div>
+        </div>
+      </a>
+
+      <a href="#" class="video-item glass">
+        <div class="video-thumb">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='360'%3E%3Crect width='640' height='360' fill='%230d0d1f'/%3E%3Crect x='2' y='2' width='636' height='356' fill='none' stroke='%237c3aed' stroke-width='2' stroke-dasharray='10 8'/%3E%3Ctext x='320' y='190' fill='%237c3aed' font-family='Inter,Arial,sans-serif' font-size='44' font-weight='800' text-anchor='middle'%3EIMAGEM 2%3C/text%3E%3C/svg%3E" alt="IMAGEM 2" loading="lazy" />
+          <div class="video-play"><span>▶</span></div>
+        </div>
+        <div class="video-info">
+          <div class="video-tag">Video</div>
+          <div class="video-title">Título do vídeo 2</div>
+          <div class="video-meta">Cliente · Categoria · Ano</div>
+          <div class="video-cta">Watch video →</div>
+        </div>
+      </a>
+
+      <a href="#" class="video-item glass">
+        <div class="video-thumb">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='360'%3E%3Crect width='640' height='360' fill='%230d0d1f'/%3E%3Crect x='2' y='2' width='636' height='356' fill='none' stroke='%237c3aed' stroke-width='2' stroke-dasharray='10 8'/%3E%3Ctext x='320' y='190' fill='%237c3aed' font-family='Inter,Arial,sans-serif' font-size='44' font-weight='800' text-anchor='middle'%3EIMAGEM 3%3C/text%3E%3C/svg%3E" alt="IMAGEM 3" loading="lazy" />
+          <div class="video-play"><span>▶</span></div>
+        </div>
+        <div class="video-info">
+          <div class="video-tag">Video</div>
+          <div class="video-title">Título do vídeo 3</div>
+          <div class="video-meta">Cliente · Categoria · Ano</div>
+          <div class="video-cta">Watch video →</div>
+        </div>
+      </a>
+
+      <a href="#" class="video-item glass">
+        <div class="video-thumb">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='360'%3E%3Crect width='640' height='360' fill='%230d0d1f'/%3E%3Crect x='2' y='2' width='636' height='356' fill='none' stroke='%237c3aed' stroke-width='2' stroke-dasharray='10 8'/%3E%3Ctext x='320' y='190' fill='%237c3aed' font-family='Inter,Arial,sans-serif' font-size='44' font-weight='800' text-anchor='middle'%3EIMAGEM 4%3C/text%3E%3C/svg%3E" alt="IMAGEM 4" loading="lazy" />
+          <div class="video-play"><span>▶</span></div>
+        </div>
+        <div class="video-info">
+          <div class="video-tag">Video</div>
+          <div class="video-title">Título do vídeo 4</div>
+          <div class="video-meta">Cliente · Categoria · Ano</div>
+          <div class="video-cta">Watch video →</div>
+        </div>
+      </a>
+
+      <a href="#" class="video-item glass">
+        <div class="video-thumb">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='360'%3E%3Crect width='640' height='360' fill='%230d0d1f'/%3E%3Crect x='2' y='2' width='636' height='356' fill='none' stroke='%237c3aed' stroke-width='2' stroke-dasharray='10 8'/%3E%3Ctext x='320' y='190' fill='%237c3aed' font-family='Inter,Arial,sans-serif' font-size='44' font-weight='800' text-anchor='middle'%3EIMAGEM 5%3C/text%3E%3C/svg%3E" alt="IMAGEM 5" loading="lazy" />
+          <div class="video-play"><span>▶</span></div>
+        </div>
+        <div class="video-info">
+          <div class="video-tag">Video</div>
+          <div class="video-title">Título do vídeo 5</div>
+          <div class="video-meta">Cliente · Categoria · Ano</div>
+          <div class="video-cta">Watch video →</div>
+        </div>
+      </a>
+
+      <a href="#" class="video-item glass">
+        <div class="video-thumb">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='360'%3E%3Crect width='640' height='360' fill='%230d0d1f'/%3E%3Crect x='2' y='2' width='636' height='356' fill='none' stroke='%237c3aed' stroke-width='2' stroke-dasharray='10 8'/%3E%3Ctext x='320' y='190' fill='%237c3aed' font-family='Inter,Arial,sans-serif' font-size='44' font-weight='800' text-anchor='middle'%3EIMAGEM 6%3C/text%3E%3C/svg%3E" alt="IMAGEM 6" loading="lazy" />
+          <div class="video-play"><span>▶</span></div>
+        </div>
+        <div class="video-info">
+          <div class="video-tag">Video</div>
+          <div class="video-title">Título do vídeo 6</div>
+          <div class="video-meta">Cliente · Categoria · Ano</div>
+          <div class="video-cta">Watch video →</div>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
